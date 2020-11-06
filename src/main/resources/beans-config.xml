@@ -1,19 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- bean definitions here -->
-     <!--方法注入 -->
-    <bean id="s1" class="com.mycompany.springbase1102.di.Student">
+    <!-- 方法注入 -->
+    <bean id="s1" class="com.mycompany.springbasic1102.di.Student">
         <property name="name" value="John" />
-        <property name="age" value="18" />
+        <property name="age" value="20" />
     </bean>
-     <!--方法注入 -->
-    <bean id="s2" class="com.mycompany.springbase1102.di.Student">
-        <property name="name" value="Mary" />
+    <!-- 方法注入 -->
+    <bean id="s2" class="com.mycompany.springbasic1102.di.Student">
+        <property name="name">
+            <value>Mary</value>
+        </property>
         <property name="age" value="22" />
     </bean>
-
+    <!-- 建構子注入 -->
+    <bean id="s3" class="com.mycompany.springbasic1102.di.Student">
+        <constructor-arg value="Anita" index="0" type="java.lang.String" />
+        <constructor-arg value="18" index="1" type="java.lang.Integer" />
+    </bean>
+    <!-- 使用 p 命名空間方法注入 -->
+    <bean id="s4" 
+          class="com.mycompany.springbasic1102.di.Student"
+          p:name="Tom"
+          p:age="20"
+    />
+    <!-- 使用 c 命名空間建構子注入 -->
+    <bean id="s5" 
+          class="com.mycompany.springbasic1102.di.Student"
+          c:name="Jo"
+          c:age="21"
+    />
+    <!-- 使用 xxx-method 配置 -->
+    <bean id="s6" 
+          class="com.mycompany.springbasic1102.di.Student"
+          init-method="init"
+          destroy-method="destroy"
+          c:name="Jane"
+          c:age="22"
+    />
+    <!-- ref 參考注入 1-->
+    <bean id="t1" class="com.mycompany.springbasic1102.di.Teacher" c:name="Happy"/>
+    <bean id="s7" class="com.mycompany.springbasic1102.di.Student"> 
+        <property name="name" value="Go" />
+        <property name="age" value="22" />
+        <property name="teacher" ref="t1" />
+    </bean> 
+    <!-- ref 參考注入 2-->
+    <bean id="t2" class="com.mycompany.springbasic1102.di.Teacher"/>
+    <bean id="s8" class="com.mycompany.springbasic1102.di.Student"> 
+        <property name="name" value="Go" />
+        <property name="age" value="22" />
+        <property name="teacher" ref="t2" />
+        <!--注入參考資料 -->
+        <property name="teacher.name" value="Lucky" />
+          
+    </bean> 
+    
+    <!-- ref 參考注入 3-->
+    <bean id="s9" class="com.mycompany.springbasic1102.di.Student"> 
+        <property name="name" value="諸葛亮" />
+        <property name="age" value="22" />
+        <property name="teacher">
+            <bean class="com.mycompany.springbasic1102.di.Teacher" c:name="劉備" />
+        </property>            
+    </bean> 
+    
 </beans>
