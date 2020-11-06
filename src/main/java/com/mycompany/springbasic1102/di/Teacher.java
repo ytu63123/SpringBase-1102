@@ -1,7 +1,28 @@
 package com.mycompany.springbasic1102.di;
 
+import java.util.List;
+import java.util.Set;
+
 public class Teacher {
     private String name;
+    private List<String> cls; //班級
+    private Set<Student> students;
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
+
+    public List<String> getCls() {
+        return cls;
+    }
+
+    public void setCls(List<String> cls) {
+        this.cls = cls;
+    }
 
     public Teacher() {
     }
@@ -20,8 +41,12 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Teacher{" + "name=" + name + '}';
+        return "Teacher{" + "name=" + name + ", cls=" + cls + ", students=" + students + '}';
     }
+
+
+
+
     
     
 }

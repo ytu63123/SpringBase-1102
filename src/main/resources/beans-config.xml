@@ -70,4 +70,15 @@
         </property>            
     </bean> 
     
+    <!-- 集合注入 List-->
+    <bean id="t3" class="com.mycompany.springbasic1102.di.Teacher">
+        <property name="name" value="Helen" />
+        <property name="cls">
+            <list>
+                <value>甲班</value>
+                <value>乙班</value>
+            </list>
+        </property>
+    </bean>
+    
 </beans>
