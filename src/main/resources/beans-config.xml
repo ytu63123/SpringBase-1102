@@ -82,9 +82,8 @@
         <property name="students">
             <set>
                 <ref bean="s1"/>
-                <ref bean="s2"/>
-                <ref bean="s3"/>
-                <ref bean="s4"/>
+                <ref bean="s5"/>
+                <ref bean="s7"/>          
             </set>
         </property>
     </bean>
