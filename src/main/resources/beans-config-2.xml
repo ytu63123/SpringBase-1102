@@ -38,6 +38,15 @@
           autowire="byType"> <!-- 唯一性 -->
     <property name="name" value="Mark" />
     </bean>
-    
-    
+   <!-- ByCostrust 自動配置 -->  
+    <bean id="emp2"
+          class="com.mycompany.springbasic1102.di.bytype.Emp"
+          autowire="constructor"> 
+    <property name="name" value="Jo"/>
+    </bean>
+     <bean id="emp3"
+          class="com.mycompany.springbasic1102.di.bytype.Emp"
+          autowire="constructor"> 
+    <constructor-arg name="name" value="Helen"/>
+    </bean>
 </beans>
