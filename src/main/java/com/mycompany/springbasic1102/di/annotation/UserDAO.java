@@ -1,6 +1,5 @@
 package com.mycompany.springbasic1102.di.annotation;
 
-import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
