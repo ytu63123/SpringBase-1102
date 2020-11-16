@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Order(1)//數字越小越先執行(優先權值)
 public class LogAspect {//log的切面
 
-    @Pointcut(value = "execution( * com.mycompany.springbasic1102.aop.*.*(..))")
+    @Pointcut(value = "execution( * com.mycompany.springbasic1102.aop.CalcImpl.*(..))")
     public void cut() {
 
     }
