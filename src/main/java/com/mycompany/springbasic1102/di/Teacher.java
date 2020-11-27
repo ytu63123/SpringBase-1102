@@ -6,35 +6,10 @@ import java.util.Set;
 
 public class Teacher {
     private String name;
-    private List<String> cls; //班級
-    private Set<Student> students; //教導的學生
-    private Map<String,Integer> subject;//教導的科目跟時數
-
-    public Map<String, Integer> getSubject() {
-        return subject;
-    }
-
-    public void setSubject(Map<String, Integer> subject) {
-        this.subject = subject;
-    }
+    private List<String> cls; // 班級
+    private Set<Student> students;
+    private Map<String, Integer> subjects;
     
-
-    public Set<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(Set<Student> students) {
-        this.students = students;
-    }
-
-    public List<String> getCls() {
-        return cls;
-    }
-
-    public void setCls(List<String> cls) {
-        this.cls = cls;
-    }
-
     public Teacher() {
     }
 
@@ -50,16 +25,33 @@ public class Teacher {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Teacher{" + "name=" + name + ", cls=" + cls + ", students=" + students + ", subject=" + subject + '}';
+    public List<String> getCls() {
+        return cls;
     }
 
+    public void setCls(List<String> cls) {
+        this.cls = cls;
+    }
 
+    public Set<Student> getStudents() {
+        return students;
+    }
 
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
 
+    public Map<String, Integer> getSubjects() {
+        return subjects;
+    }
 
+    public void setSubjects(Map<String, Integer> subjects) {
+        this.subjects = subjects;
+    }
 
-    
+    @Override
+    public String toString() {
+        return "Teacher{" + "name=" + name + ", cls=" + cls + ", students=" + students + ", subjects=" + subjects + '}';
+    }
     
 }

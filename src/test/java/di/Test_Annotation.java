@@ -11,24 +11,23 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:beans-config-3.xml"})
 public class Test_Annotation {
-
     @Autowired
     private Users users;
+    
     @Autowired
     private UserController userController;
-
+    
     @Test
     public void t1() {
-        //一般模式
+        // 一般模式
         System.out.println(users);
-        //MVC模式   
-        //查詢所有 User  
+        
+        // MVC 模式
+        // 查詢所有的 User
         Users users = userController.getAll();
         System.out.println(users);
-        //請各別檢查"John" 與"Bob"是否在Users列表中?
-        boolean check =userController.existByName("John");
-        boolean check1 =userController.existByName("Bob");
+        // 請各別檢查 "John" 與 "Bob" 是否在 Users 列表中 ?
+        Boolean check = userController.existByName("John");
         System.out.println(check);
-        System.out.println(check1);
     }
 }

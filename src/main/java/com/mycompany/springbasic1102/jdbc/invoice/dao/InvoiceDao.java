@@ -13,8 +13,8 @@ public class InvoiceDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     
-    public List<Item> queryItem(){
-    // SimpleFlatMapper
+    public List<Item> queryIntem() {
+        // SimpleFlatMapper
         ResultSetExtractor<List<Item>> mapper = JdbcTemplateMapperFactory
                 .newInstance()
                 .addKeys("id")
@@ -28,5 +28,4 @@ public class InvoiceDao {
         List<Item> items = jdbcTemplate.query(sql, mapper);
         return items;
     }
-    
 }

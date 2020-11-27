@@ -2,25 +2,24 @@ package com.mycompany.springbasic1102.di.bytype;
 
 public class Emp {
     private String name;
-   private Dept dept;
-   private Motor motor;
+    private Dept dept;
+    private Motor motor;
 
     public Emp() {
     }
 
-     public Emp(Dept dept, Motor motor) {
+    public Emp(Dept dept, Motor motor) {
         this.dept = dept;
         this.motor = motor;
     }
-    
+
     public Emp(String name, Dept dept, Motor motor) {
         this.name = name;
         this.dept = dept;
         this.motor = motor;
     }
 
-   
-
+    
     public String getName() {
         return name;
     }
@@ -49,5 +48,5 @@ public class Emp {
     public String toString() {
         return "Emp{" + "name=" + name + ", dept=" + dept + ", motor=" + motor + '}';
     }
-   
+    
 }

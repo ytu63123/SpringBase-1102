@@ -1,9 +1,8 @@
-
 package com.mycompany.springbasic1102.di.bytype;
 
-public class Car implements Motor{
-   private String name;
-   private Integer price;
+public class Car implements Motor {
+    private String name;
+    private Integer price;
 
     public String getName() {
         return name;
@@ -25,5 +24,5 @@ public class Car implements Motor{
     public String toString() {
         return "Car{" + "name=" + name + ", price=" + price + '}';
     }
-   
+    
 }

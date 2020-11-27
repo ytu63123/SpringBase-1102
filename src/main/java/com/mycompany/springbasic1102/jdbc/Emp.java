@@ -54,6 +54,4 @@ public class Emp {
         return "Emp{" + "eid=" + eid + ", ename=" + ename + ", age=" + age + ", sex=" + sex + ", ct=" + ct + '}';
     }
     
-
-    
 }

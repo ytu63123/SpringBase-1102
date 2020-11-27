@@ -6,17 +6,19 @@ public class LottoFactory implements FactoryBean<Lotto>{
 
     @Override
     public Lotto getObject() throws Exception {
-       return new Lotto(5,1,39);
+        return new Lotto(5, 1, 39);
     }
 
     @Override
     public Class<?> getObjectType() {
-     return Lotto.class;
+        return Lotto.class;
     }
 
     @Override
     public boolean isSingleton() {
-        return true; //true=唯一的,false=多種的
+        return false;
     }
+
+    
     
 }

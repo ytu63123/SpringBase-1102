@@ -1,4 +1,5 @@
 package jdbc.invoice;
+
 import com.mycompany.springbasic1102.jdbc.invoice.entity.Item;
 import java.util.List;
 import org.junit.Test;
@@ -29,6 +30,3 @@ public class Test2 {
         System.out.println(items);
     }
 }
-
-
-

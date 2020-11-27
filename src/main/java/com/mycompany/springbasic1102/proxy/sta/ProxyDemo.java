@@ -27,11 +27,11 @@ class Proxy implements Subject {
 
 }
 
-public class ProxyDemo {//靜態代理
+public class ProxyDemo {
     public static void main(String[] args) {
-       // Subject subject = new RealSubject();
-        //subject.request();
-         Proxy proxy = new Proxy(new RealSubject());
+//        Subject subject = new RealSubject();
+//        subject.request();
+        Proxy proxy = new Proxy(new RealSubject());
         proxy.request();
     }
 }

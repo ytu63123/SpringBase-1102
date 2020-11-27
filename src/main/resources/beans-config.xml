@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:c="http://www.springframework.org/schema/c"
-       xmlns:util="http://www.springframework.org/schema/util"
-       xsi:schemaLocation="
-         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-         http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
     <!-- 方法注入 -->
     <bean id="s1" class="com.mycompany.springbasic1102.di.Student">
@@ -45,39 +45,38 @@
           c:name="Jane"
           c:age="22"
     />
-    <!-- ref 參考注入 1-->
+    <!-- ref 參考注入 1 -->
     <bean id="t1" class="com.mycompany.springbasic1102.di.Teacher" c:name="Happy"/>
-    <bean id="s7" class="com.mycompany.springbasic1102.di.Student"> 
+    <bean id="s7" class="com.mycompany.springbasic1102.di.Student">
         <property name="name" value="Go" />
         <property name="age" value="22" />
         <property name="teacher" ref="t1" />
-    </bean> 
-    <!-- ref 參考注入 2-->
+    </bean>
+    
+    <!-- ref 參考注入 2 -->
     <bean id="t2" class="com.mycompany.springbasic1102.di.Teacher"/>
-    <bean id="s8" class="com.mycompany.springbasic1102.di.Student"> 
+    <bean id="s8" class="com.mycompany.springbasic1102.di.Student">
         <property name="name" value="Go" />
         <property name="age" value="22" />
         <property name="teacher" ref="t2" />
-        <!--注入參考資料 -->
+        <!-- 注入參考資料 -->
         <property name="teacher.name" value="Lucky" />
-          
-    </bean> 
-    
-    <!-- ref 參考注入 3-->
-    <bean id="s9" class="com.mycompany.springbasic1102.di.Student"> 
+    </bean>
+    <!-- ref 參考注入 3 -->
+    <bean id="s9" class="com.mycompany.springbasic1102.di.Student">
         <property name="name" value="諸葛亮" />
         <property name="age" value="22" />
         <property name="teacher">
+            <!-- ref 參考注入內部類別 -->
             <bean class="com.mycompany.springbasic1102.di.Teacher" c:name="劉備" />
-        </property>            
-    </bean> 
-    
-    <!-- 集合注入 List/set-->
+        </property>
+    </bean>
+    <!-- 集合注入 List/Set/Map -->
     <bean id="t3" class="com.mycompany.springbasic1102.di.Teacher">
         <property name="name" value="Helen" />
         <!-- 班級 -->
-        <property name="cls">     
-            <list>
+        <property name="cls">
+            <list> <!-- 可替換 <array> -->
                 <value>甲班</value>
                 <value>乙班</value>
             </list>
@@ -85,12 +84,13 @@
         <!-- 學生 -->
         <property name="students">
             <set>
-                <ref bean="s1"/>
-                <ref bean="s5"/>
-                <ref bean="s7"/>          
+                <ref bean="s1" />
+                <ref bean="s5" />
+                <ref bean="s7" />
             </set>
         </property>
-        <property name="subject">
+        <!-- 科目 -->
+        <property name="subjects">
             <map>
                 <entry>
                     <key>
@@ -103,49 +103,51 @@
                         <value>數學</value>
                     </key>
                     <value>2</value>
-                </entry> 
+                </entry>
                 <entry>
                     <key>
                         <value>英文</value>
                     </key>
                     <value>1</value>
-                </entry>  
-            </map>            
+                </entry>
+            </map>
         </property>
     </bean>
-   
+    
     <util:set id="students">
-        <ref bean="s1"/>
-        <ref bean="s5"/>
-        <ref bean="s7"/>          
-    </util:set> 
+        <ref bean="s1" />
+        <ref bean="s5" />
+        <ref bean="s7" />
+    </util:set>
     <bean id="t4" class="com.mycompany.springbasic1102.di.Teacher">
-        <property name="name" value="Helen11" />
+        <property name="name" value="Helen" />
         <property name="students" ref="students" />
-    </bean> 
+    </bean>
     
-   <!-- 工廠模式 FactoryBean --> 
+    <!-- 工廠模式 FactoryBean -->
     <bean id="lotto" class="com.mycompany.springbasic1102.di.LottoFactory" />
-   <!--  Bean的作用域Scope : prototype,singleton,request,session -->
-   <bean id="lotto2" 
-         class="com.mycompany.springbasic1102.di.Lotto"
-         scope="prototype"
-         c:amount="5"
-         c:begin="1"
-         c:end="39"
-   
-   />
-   <util:set id="nums">
+    <!-- Bean 的作用域scope : prototype, singleton, request, session -->
+    <bean id="lotto2" 
+          class="com.mycompany.springbasic1102.di.Lotto"
+          scope="prototype"
+          c:amount="5"
+          c:begin="1"
+          c:end="39"
+    />
     
-       
-   </util:set>
-   
+    <util:set id="nums">
+        <value>1</value>
+        <value>2</value>
+        <value>3</value>
+        <value>4</value>
+        <value>5</value>
+    </util:set>
     <bean id="lotto3" 
-         class="com.mycompany.springbasic1102.di.Lotto"
-         scope="prototype"
-         p:amount="5"
-         p:begin="1"
-         p:end="39">
+          class="com.mycompany.springbasic1102.di.Lotto"
+          scope="prototype"
+          p:amount="5"
+          p:begin="1"
+          p:end="39">
         <property name="nums" ref="nums" />
-    </bean>          
+    </bean>
 </beans>

@@ -1,4 +1,3 @@
-
 package com.mycompany.springbasic1102.jdbc.homework.entity;
 
 public class Advert {

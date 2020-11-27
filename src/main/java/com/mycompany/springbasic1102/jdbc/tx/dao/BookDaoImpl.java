@@ -6,34 +6,35 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BookDaoImpl implements BookDAO {
-
+public class BookDaoImpl implements BookDao {
+    
     @Autowired
     private JdbcTemplate jdbcTemplate;
-
+    
     @Override
     public Integer getPrice(Integer bid) {
-        String sql = "select price from Book where bid=?";
+        String sql = "Select price From Book Where bid = ?";
         Integer price = jdbcTemplate.queryForObject(sql, Integer.class, bid);
         return price;
     }
 
     @Override
     public void updateStock(Integer bid) {
-        String sql = "update Stock set amount=amount-1 where bid=?";
+        String sql = "Update Stock set amount = amount - 1 Where bid = ?";
         jdbcTemplate.update(sql, bid);
     }
 
     @Override
-    public void updateWallet(Integer wid, Integer money)throws InsufficientAmount{
-        String sql ="select money from wallet where wid=?";
-        int walletMoney=jdbcTemplate.queryForObject(sql, Integer.class, wid);
-        if(walletMoney<money){
-        throw  new InsufficientAmount();
+    public void updateWallet(Integer wid, Integer money) throws InsufficientAmount {
+        // 先判斷 Wallet 的 money 是否足夠 ?
+        String sql = "Select money From Wallet Where wid = ?";
+        int walletMoney = jdbcTemplate.queryForObject(sql, Integer.class, wid);
+        if(walletMoney < money) {
+            throw new InsufficientAmount();
         }
-         sql = "update Wallet set money=money- ? where wid=?";
+        // 進行錢包餘額更新
+        sql = "Update Wallet set money = money - ? Where wid = ?";
         jdbcTemplate.update(sql, money, wid);
     }
     
-
 }

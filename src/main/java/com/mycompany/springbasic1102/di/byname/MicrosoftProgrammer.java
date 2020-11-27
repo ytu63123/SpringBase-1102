@@ -4,7 +4,6 @@ public class MicrosoftProgrammer {
     private String name;
     private Language vb;
 
-
     public String getName() {
         return name;
     }
