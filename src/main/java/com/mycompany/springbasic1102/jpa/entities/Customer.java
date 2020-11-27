@@ -33,4 +33,9 @@ public class Customer implements Serializable {
         this.lastName = lastName;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" + "id=" + id + ", lastName=" + lastName + '}';
+    }
+
 }
