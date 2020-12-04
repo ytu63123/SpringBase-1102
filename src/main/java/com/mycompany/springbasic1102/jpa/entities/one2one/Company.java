@@ -1,5 +1,6 @@
 package com.mycompany.springbasic1102.jpa.entities.one2one;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ public class Company {
     private Integer id;
     @Column(name = "name",length = 20,nullable = false)
     private String name;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)//支援聯集新增
     @JoinColumn(name = "boss_id",referencedColumnName = "id",unique = true)
     private Boss boss;
 
