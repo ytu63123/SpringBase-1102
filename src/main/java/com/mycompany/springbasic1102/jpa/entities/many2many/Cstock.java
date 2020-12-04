@@ -22,7 +22,7 @@ public class Cstock {
     @Column
     private String symbol;
     
-    @ManyToMany(mappedBy = "cstocks")
+    @ManyToMany(mappedBy = "cstocks",cascade = CascadeType.PERSIST)
     private Set<Fund> funds=new LinkedHashSet<>();
 
     public Cstock() {

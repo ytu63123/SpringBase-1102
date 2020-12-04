@@ -19,6 +19,7 @@ public class Create extends JPATemplate {
         f1.getCstocks().add(c1);
         f1.getCstocks().add(c3);
 
+
         session.persist(f1);
 
     }
